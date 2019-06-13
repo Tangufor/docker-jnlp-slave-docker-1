@@ -15,6 +15,10 @@ RUN curl -sSL https://get.docker.com/ | sh && \
     chmod 755 kubectl && \
     mv kubectl /usr/local/bin/kubectl
 
+#Install NodeJS
+
+RUN apt install -y nodejs
+
 # Debian packages
 RUN apt-get update -qy && \
     DEBIAN_FRONTEND=noninteractive apt-get install -qy python-pip groff-base && \
@@ -36,7 +40,7 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-c
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
 
-USER jenkins
+USER root
 RUN mkdir /home/jenkins/.jenkins
 VOLUME /home/jenkins/.jenkins
 WORKDIR /home/jenkins
