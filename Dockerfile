@@ -75,6 +75,10 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 RUN curl -sL https://deb.nodesource.com/setup_11.x | sh && \
     apt-get update -yq && apt-get install -y nodejs
 
+# Install jq
+
+RUN apt-get install -y jq
+
 # Debian packages
 RUN apt-get update -qy && \
     DEBIAN_FRONTEND=noninteractive apt-get install -qy python-pip groff-base && \
